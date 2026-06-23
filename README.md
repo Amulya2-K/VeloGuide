@@ -1,6 +1,6 @@
 # VeloGuide: Full-Stack PCR-Verified Guide Registry & Assignment Dashboard
 
-CertiTour is a cryptographically secured full-stack platform designed to bridge the gap between independent travelers and verified local guides. Built using the MERN stack (MongoDB, Express, React, Node.js), the platform implements an automated gatekeeper verification system that validates guide credentials against a pre-approved authority registry before account registration, ensuring traveler safety and community trust.
+VeloGuide is a cryptographically secured full-stack platform designed to bridge the gap between independent travelers and verified local guides. Built using the MERN stack (MongoDB, Express, React, Node.js), the platform implements an automated gatekeeper verification system that validates guide credentials against a pre-approved authority registry before account registration, ensuring traveler safety and community trust.
 
 ## 🚀 Key Features
 
@@ -23,18 +23,18 @@ CertiTour is a cryptographically secured full-stack platform designed to bridge 
 ```text
 ├── backend/
 │   ├── models/
-│   │   ├── Booking.js          # Schema for transit tracking logs
-│   │   ├── Guide.js            # Schema for guide profile information
-│   │   └── VerifiedPCR.js      # The pre-approved official registration whitelist
-│   ├── server.js               # Central Express app config, database connections, and API routes
+│   │   ├── Booking.js          
+│   │   ├── Guide.js            
+│   │   └── VerifiedPCR.js      
+│   ├── server.js               
 │   └── package.json
 │
 └── frontend/
     ├── src/
     │   ├── pages/
-    │   │   ├── GuideRegistration.jsx   # Form onboarding with verification middleware
-    │   │   ├── GuideDashboard.jsx      # Interactive dispatch dashboard setup
-    │   │   └── DestinationDetail.jsx   # Tourist exploration selection module
-    │   ├── App.jsx             # React routing core configuration
+    │   │   ├── GuideRegistration.jsx   
+    │   │   ├── GuideDashboard.jsx    
+    │   │   └── DestinationDetail.jsx 
+    │   ├── App.jsx            
     │   └── main.jsx
     └── package.json
