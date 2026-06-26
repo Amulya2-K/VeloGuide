@@ -11,30 +11,27 @@ VeloGuide is a cryptographically secured full-stack platform designed to bridge 
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js, React Router, Axios, CSS3 (Flexbox/Grid layout layouts)
+- **Frontend:** React.js, React Router, Axios, CSS3 (Flexbox/Grid layouts)
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB, Mongoose ODM
 - **Authentication/Security:** JSON Web Tokens (JWT), BcryptJS, CORS Middleware
 
 ---
 
-## 📂 Project Structure
+## ⚙️ Getting Started
 
-```text
-├── backend/
-│   ├── models/
-│   │   ├── Booking.js          
-│   │   ├── Guide.js            
-│   │   └── VerifiedPCR.js      
-│   ├── server.js               
-│   └── package.json
-│
-└── frontend/
-    ├── src/
-    │   ├── pages/
-    │   │   ├── GuideRegistration.jsx   
-    │   │   ├── GuideDashboard.jsx    
-    │   │   └── DestinationDetail.jsx 
-    │   ├── App.jsx            
-    │   └── main.jsx
-    └── package.json
+### Prerequisites
+Ensure you have the following installed on your machine:
+- Node.js (v16.x or higher)
+- MongoDB Community Server & MongoDB Compass
+
+### 1. Database Setup
+1. Launch **MongoDB Compass** and connect to your local instance (`mongodb://localhost:27017`).
+2. Create a database named `localguide_db`.
+3. Create a collection named `verified_pcr_registry`.
+4. Insert a sample whitelisted identification document to test registration gating:
+   ```json
+   {
+     "policeClearanceId": "PCR-99999",
+     "officialName": "Authorized Local Agent"
+   }
