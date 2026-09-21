@@ -125,13 +125,16 @@ Return ONLY valid JSON matching this exact structure:
     }
 
     // Automatically find & match registered VeloGuide local guides for this destination
-    const regex = new RegExp(destination, 'i');
-    let matchedGuides = await Guide.find({ assignedCity: { $regex: regex } }).select('-password');
+    // Find guides registered specifically for this destination
+const destinationName = destination.trim();
 
-    // If no guide found in exact city, return top-rated general guides
-    if (matchedGuides.length === 0) {
-      matchedGuides = await Guide.find().limit(3).select('-password');
-    }
+const escapedDestination = destinationName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const cityRegex = new RegExp(`^${escapedDestination}$`, 'i');
+
+const matchedGuides = await Guide.find({
+  assignedCity: { $regex: cityRegex }
+}).select('-password');
 
     res.json({
       success: true,
@@ -140,5 +143,59 @@ Return ONLY valid JSON matching this exact structure:
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
+  }
+};
+exports.chatWithAI = async (req, res) => {
+  try {
+    const { message } = req.body;
+
+    if (!message || !message.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Message is required."
+      });
+    }
+
+    if (!aiClient) {
+      return res.status(500).json({
+        success: false,
+        message: "Gemini API is not configured."
+      });
+    }
+
+    const prompt = `
+You are VeloGuide AI, a friendly travel assistant.
+
+Help users with:
+- Travel destinations
+- Places to visit
+- Local attractions
+- Travel planning
+- Food recommendations
+- General travel questions
+
+Keep responses helpful, concise, and easy to understand.
+
+User message:
+${message}
+`;
+
+    const response = await aiClient.models.generateContent({
+      model: "gemini-3.1-flash-lite",
+      contents: prompt
+    });
+
+    return res.json({
+      success: true,
+      reply: response.text
+    });
+
+  } catch (error) {
+    console.error("Chatbot error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Unable to generate AI response."
+    });
   }
 };

@@ -108,4 +108,4 @@ const GuideSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Guide', GuideSchema);
+module.exports = mongoose.model('Guide', GuideSchema);  

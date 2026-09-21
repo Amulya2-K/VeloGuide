@@ -34,7 +34,7 @@ app.use(express.json());
 // DATABASE + GUIDE INITIALIZATION
 // ======================================================
 
-mongoose.connect(MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
     .then(async () => {
 
         console.log(

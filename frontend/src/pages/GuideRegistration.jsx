@@ -4,6 +4,7 @@ import axios from 'axios';
 
 export default function GuideRegistration() {
   const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({ 
     name: '', 
     email: '', 

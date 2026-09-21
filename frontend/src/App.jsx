@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
-
+import Chatbot from './Components/Chatbot';
 import LandingGateway from './pages/LandingGateway';
 import TouristLogin from './pages/TouristLogin';
 import TouristRegister from './pages/TouristRegister';
@@ -129,6 +129,7 @@ function App() {
             <Route path="/tourist-bookings" element={<TouristBookings />} />
             <Route path="/guide-dashboard" element={<GuideDashboard />} />
           </Routes>
+          <Chatbot />
         </main>
       </div>
     </Router>
